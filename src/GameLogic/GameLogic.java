@@ -1,6 +1,7 @@
 package GameLogic;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class GameLogic {
 
@@ -8,6 +9,10 @@ public class GameLogic {
 		// Simple game of Rock, Paper, Scissors
 		
 		String[] gameOptions = {"R", "P", "S"};
+		
+		String ComputerChoice = gameOptions[new Random().nextInt(gameOptions.length)];
+		
+		System.out.print(ComputerChoice);
 	}
 
 }
