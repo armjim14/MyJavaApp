@@ -3,8 +3,11 @@ package GameLogic;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Res {
+	
+	static Scanner MakeObj = new Scanner(System.in);
 
 	public static String checkResults(String c, String p) {
 		if ( c.equals("R") ) {
@@ -33,6 +36,37 @@ public class Res {
 		
 		// With logic in while loop in Main.java, this should not be reached.
 		return "This should not display";
+	}
+	
+	public static String getInput(String question) {
+		System.out.println(question);
+		String getResponse = MakeObj.nextLine();
+		
+		Boolean isResponseGood = checkResponse(getResponse);
+		
+		if ( !isResponseGood ) {
+			getResponse = "";
+		}
+		
+		return getResponse;
+	}
+	
+	public static void closeScanner() {
+		MakeObj.close();
+	}
+	
+	private static Boolean checkResponse(String response) {
+		Boolean rtn = false;
+		
+		String[] allowedLetters = {"R", "P", "S"};
+		
+		for ( int i = 0; i < allowedLetters.length; i++ ) {
+			if ( response.toUpperCase().equals(allowedLetters[i]) ) {
+				rtn = true;
+			}
+		}
+		
+		return rtn;
 	}
 	
 	public static void writeToFile(String str) {
