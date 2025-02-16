@@ -10,30 +10,51 @@ public class GameLogic {
 		// Simple game of Rock, Paper, Scissors
 		
 		Boolean run = true;
-		int startGame = RunGame();
+		int startGame = 1;
+		int failedInput = 0;
 		
 		while(run) {
+
 			if ( startGame == 1 ) {
-				run = false;
+				startGame = RunGame("Please choose from (P, R, S)");
+				failedInput = 0;
+			} else if (startGame == 2) {
+				startGame = RunGame("Input not accepted, Please choose from (P, R, S)");
+				failedInput++;
 			}
+			
+			if ( startGame == 3 || failedInput > 2 ) {
+				run = false;				
+			}
+			
 		}
 		
 		Res.closeScanner();
 	}
 
-	public static int RunGame() {
+	public static int RunGame(String question) {
 		String ComputerChoice = gameOptions[new Random().nextInt(gameOptions.length)];
-		String UserChoice = Res.getInput("Please choose from (P, R, S)");
+		String UserChoice = Res.getInput(question);
+
+		int gameStatus = 1;
 		
-		if ( UserChoice.length() == 0 ) {
-			System.out.println("\n\n\n");
-			Res.getInput("Input not accepted, please choose from (P, R, S)");
+		if ( UserChoice.length() == 0 || UserChoice.equals("Y") ) {
+			System.out.println("\n");
+			gameStatus = 2;
 		} else {			
 			System.out.println("Computer Chose: " + ComputerChoice);
 			System.out.println("You Chose:" + UserChoice);
+			
+			String getResults = Res.checkResults(ComputerChoice, UserChoice);
+			System.out.println(getResults);
+			
+			String playAgain = Res.getInput("\n Want to play again? ( Y/N )");
+			if ( !playAgain.equals("Y") ) {
+				gameStatus = 3;
+			}
 		}
 		
-		return 1;
+		return gameStatus;
 	}
 	
 }

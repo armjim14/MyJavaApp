@@ -10,6 +10,10 @@ public class Res {
 	static Scanner MakeObj = new Scanner(System.in);
 
 	public static String checkResults(String c, String p) {
+		if ( c.equals(p) ) {
+			return "Tied Game";
+		}
+		
 		if ( c.equals("R") ) {
 			if ( p.equals("P") ) {
 				return "You Win!";
@@ -48,7 +52,7 @@ public class Res {
 			getResponse = "";
 		}
 		
-		return getResponse;
+		return getResponse.toUpperCase();
 	}
 	
 	public static void closeScanner() {
@@ -58,7 +62,7 @@ public class Res {
 	private static Boolean checkResponse(String response) {
 		Boolean rtn = false;
 		
-		String[] allowedLetters = {"R", "P", "S"};
+		String[] allowedLetters = {"R", "P", "S", "Y"};
 		
 		for ( int i = 0; i < allowedLetters.length; i++ ) {
 			if ( response.toUpperCase().equals(allowedLetters[i]) ) {
