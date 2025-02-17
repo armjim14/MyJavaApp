@@ -49,7 +49,6 @@ public class GameLogic {
 			String getResults = Res.checkResults(ComputerChoice, UserChoice);
 			System.out.println(getResults);
 			
-			// N can be entered but will return as a empty string, and empty sting doesn't equal Y
 			String playAgain = Res.getInput("\n Want to play again? ( Y/N )");
 			if ( !playAgain.equals("Y") ) {
 				gameStatus = 3;
