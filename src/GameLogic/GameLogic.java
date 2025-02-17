@@ -38,6 +38,7 @@ public class GameLogic {
 
 		int gameStatus = 1;
 		
+		// This if is making sure a valid game option was selected
 		if ( UserChoice.length() == 0 || UserChoice.equals("Y") ) {
 			System.out.println("\n");
 			gameStatus = 2;
