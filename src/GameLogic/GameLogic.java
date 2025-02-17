@@ -38,7 +38,7 @@ public class GameLogic {
 
 		int gameStatus = 1;
 		
-		// This if is making sure a valid game option was selected.
+		// This if is making sure a valid game option was selected
 		if ( UserChoice.length() == 0 || UserChoice.equals("Y") ) {
 			System.out.println("\n");
 			gameStatus = 2;
@@ -49,6 +49,7 @@ public class GameLogic {
 			String getResults = Res.checkResults(ComputerChoice, UserChoice);
 			System.out.println(getResults);
 			
+			// N can be entered but will return as a empty string, and empty sting doesn't equal Y
 			String playAgain = Res.getInput("\n Want to play again? ( Y/N )");
 			if ( !playAgain.equals("Y") ) {
 				gameStatus = 3;
