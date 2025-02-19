@@ -23,6 +23,7 @@ public class GameLogic {
 				failedInput++;
 			}
 			
+			// if the user stops the game or fails to enter a valid input 3 times. The game will end
 			if ( startGame == 3 || failedInput > 2 ) {
 				run = false;				
 			}
